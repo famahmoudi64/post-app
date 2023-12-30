@@ -1,5 +1,4 @@
 <template>
-
     <me-dialog v-if="dialog" @close="closeAlertandPost()">
         <p>you edited your post successfully!</p>
         <button class="btn btn-primary" @click="closeAlertandPost"> GotoPosts </button>
@@ -10,7 +9,7 @@
     </div>
     <div  v-else class="col-md-6">
         <h1>Edit Post:</h1>
-    <form-vue @formdata='updatePost' :buttonloading="loading" button-text="Edit Post" :post="post"></form-vue>
+        <form-vue @formdata='updatePost' :buttonloading="loading" button-text="Edit Post" :post="post"></form-vue>
     </div>  
 </template>
 
@@ -33,19 +32,19 @@ export default{
         const post = ref({})
         const editloading = ref(true)
         
-      function getPost(){
-      axios
-           .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
-           .then(function(response){
-           console.log(response.data)
-           post.value = response.data
-           editloading.value=false
-           })
-           .catch(function(error){
-            console.log(error)
-           })
+    function getPost(){
+        axios
+             .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
+             .then(function(response){
+               console.log(response.data)
+               post.value = response.data
+               editloading.value=false
+             })
+             .catch(function(error){
+               console.log(error)
+             })
       }
-      getPost()
+        getPost()
     function updatePost(formdata){
         loading.value=true
         axios
@@ -64,8 +63,8 @@ export default{
     function closeAlertandPost(){
         dialog.value = false
         router.push('/Posts') 
-        }
+    }
     return {loading,closeAlertandPost,dialog,updatePost,editloading,getPost,post}
-         }
+    }
 }
 </script>

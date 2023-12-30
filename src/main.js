@@ -15,7 +15,7 @@ import showPost from './components/Posts/showPost.vue'
 import createPost from './components/Posts/createPost.vue'
 import editPost from './components/Posts/editPost.vue'
 
-  const routes =[
+  const routes = [
     { path:'/', component:TheHome},
     { path:'/Users', name:'users', component:TemplateUsers, children:[
       {path:'', name:'users', component:indexUsers},
@@ -29,7 +29,7 @@ import editPost from './components/Posts/editPost.vue'
     ]}
   ];
   const router1 = createRouter({
-    history:createWebHistory(),
+    history: createWebHistory(),
     routes
   })
 

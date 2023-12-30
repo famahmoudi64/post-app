@@ -1,8 +1,8 @@
 <template>
-    <div class="col-md-6">
-        <h1>Create Post:</h1>
-    </div>
-<form-vue @formdata="createPost" :button-loading="loading" button-text="Create Post"></form-vue>
+  <div class="col-md-6">
+    <h1>Create Post:</h1>
+  </div>
+  <form-vue @formdata="createPost" :button-loading="loading" button-text="Create Post"></form-vue>
 </template>
 
 <script>
@@ -20,27 +20,27 @@ export default{
     function createPost(formdata){
         loading.value = true
       axios
-      .post('https://jsonplaceholder.typicode.com/posts',{
-        userId: 1,
-        title: formdata.title,
-        body: formdata.body
+           .post('https://jsonplaceholder.typicode.com/posts',{
+           userId: 1,
+           title: formdata.title,
+           body: formdata.body
       })
-      .then(function(){
-        formdata.title =''
-        formdata.body =''
-        loading.value = false
+          .then(function(){
+              formdata.title =''
+              formdata.body =''
+              loading.value = false
 
-        Swal.fire({
-          icon:'success',
-          title: 'your post submitted!',
-          ConfirmButtonText:'cool',
-         })
-      })
-      .catch(function(error){
-        console.log(error)
-      })
+              Swal.fire({
+               icon:'success',
+               title: 'your post submitted!',
+               ConfirmButtonText:'cool',
+              })
+          })
+          .catch(function(error){
+              console.log(error)
+          })
     }
-    return{loading,createPost}
-}
+       return{loading,createPost}
+  }
 }
 </script>
